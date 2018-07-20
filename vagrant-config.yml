@@ -1,0 +1,12 @@
+config:
+  domainname: vagrant.test
+  iprange: "192.168"
+vms:
+  master1:
+    hostname: "machine1"
+    ip: "10.10"
+    dsize: 10
+  master2:
+    hostname: "master2"
+    ip: "10.11"
+    autostart: false
