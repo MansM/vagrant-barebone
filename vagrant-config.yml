@@ -1,9 +1,14 @@
 config:
   domainname: vagrant.test
   iprange: "192.168"
+  ansible: playbook.yml
+  ansiblegroups:
+    masters:
+      - master1
+      - master2
 vms:
   master1:
-    hostname: "machine1"
+    hostname: "master1"
     ip: "10.10"
     dsize: 10
   master2:

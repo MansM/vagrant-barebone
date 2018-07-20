@@ -37,6 +37,19 @@ Vagrant.configure(2) do |config|
           vb.customize [ 'storageattach', :id, '--storagectl', controller_name, '--port', 2, '--device', 0, '--type', 'hdd', '--medium', disk_name ]
         end # extra disk
       end # virtualbox
+      
+      if config_yml["config"].key?("ansible")
+        vm_config.vm.provision :ansible do |ansible|
+          ansible.playbook = config_yml["config"]["ansible"]
+          ansible.become = true
+          ansible.verbose = "v"
+          ansible.host_key_checking = false
+          ansible.limit = settings["hostname"]
+          if config_yml["config"].key?("ansiblegroups")
+            ansible.groups = config_yml["config"]["ansiblegroups"]
+          end # ansible groups
+        end # ansible
+      end #ansible if
     end # vm_config
   end # each vm
 end # vagrant configure
