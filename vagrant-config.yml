@@ -15,3 +15,7 @@ vms:
     hostname: "master2"
     ip: "10.11"
     autostart: false
+  master3:
+    hostname: "master3"
+    ip: "10.12"
+    autostart: true
